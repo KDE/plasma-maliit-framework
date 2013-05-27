@@ -30,6 +30,8 @@ PkgConfigBR:
     - xext
     - xfixes
     - libudev
+Obsoletes:
+    - libmaliit-quick
 Configure: none
 SetupOptions: -q -n %{name}-%{version}/maliit-framework
 Builder: qmake5

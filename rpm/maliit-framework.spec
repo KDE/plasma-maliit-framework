@@ -34,6 +34,7 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  fdupes
+Obsoletes:   libmaliit-quick
 
 %description
 Core libraries of Maliit and server
