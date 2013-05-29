@@ -21,6 +21,8 @@ Source100:  maliit-framework.yaml
 Patch0:     enable-systemd-activation.patch
 Requires:   dbus-x11
 Requires:   qt5-plugin-platform-inputcontext-maliit
+Requires:   qt5-qtdeclarative-import-qtquick2plugin
+Requires:   qt5-plugin-platform-xcb
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(Qt5Core)

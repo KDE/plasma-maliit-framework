@@ -19,6 +19,8 @@ Description: |
 Requires:
     - dbus-x11
     - qt5-plugin-platform-inputcontext-maliit
+    - qt5-qtdeclarative-import-qtquick2plugin
+    - qt5-plugin-platform-xcb
 PkgConfigBR:
     - Qt5Core
     - Qt5Widgets
