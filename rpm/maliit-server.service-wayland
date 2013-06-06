@@ -1,0 +1,9 @@
+[Unit]
+Description=The Maliit server
+After=lipstick.service
+Requires=dbus.socket
+
+[Service]
+ExecStart=/usr/bin/maliit-server
+Type=dbus
+BusName=org.maliit.server
