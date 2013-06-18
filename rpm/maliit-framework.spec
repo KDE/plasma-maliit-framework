@@ -9,7 +9,7 @@ Name:       maliit-framework
 # << macros
 
 Summary:    Core libraries of Maliit and server
-Version:    0.99.0+git1.1c85f0fd4
+Version:    0.99.0
 Release:    1
 Group:      System/Libraries
 License:    LGPLv2.1
