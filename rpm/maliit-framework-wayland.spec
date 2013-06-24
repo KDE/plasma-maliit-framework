@@ -11,7 +11,7 @@ Source1:    maliit-server.sh
 Source2:    maliit-server.service-wayland
 Patch0:     enable-systemd-activation.patch
 Patch1:     lipstick_platform.patch
-Requires:   qt5-plugin-platform-inputcontext-maliit
+Requires:   maliit-framework-wayland-inputcontext
 Requires:   qt5-qtdeclarative-import-qtquick2plugin
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
