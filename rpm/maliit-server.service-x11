@@ -1,9 +1,12 @@
 [Unit]
 Description=The Maliit server
-After=xorg.target mcompositor.service
-Requires=dbus.socket xorg.target mthemedaemon.service mcompositor.service
+After=pre-user-session.target mcompositor.service
+Requires=dbus.socket pre-user-session.target mthemedaemon.service mcompositor.service
 
 [Service]
 ExecStart=/usr/bin/maliit-server
 Type=dbus
 BusName=org.maliit.server
+
+[Install]
+WantedBy=user-session.target

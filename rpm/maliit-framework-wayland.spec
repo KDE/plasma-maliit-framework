@@ -13,6 +13,7 @@ Patch0:     enable-systemd-activation.patch
 Patch1:     lipstick_platform.patch
 Requires:   maliit-framework-wayland-inputcontext
 Requires:   qt5-qtdeclarative-import-qtquick2plugin
+Requires:   systemd-user-session-targets
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(Qt5Core)
@@ -102,10 +103,10 @@ make %{?jobs:-j%jobs}
 %install
 rm -rf %{buildroot}
 %qmake_install
-mkdir -p %{buildroot}%{_sysconfdir}/profile.d
-cp -a %{SOURCE1} %{buildroot}%{_sysconfdir}/profile.d
-mkdir -p %{buildroot}%{_libdir}/systemd/user/
-cp -a %{SOURCE2} %{buildroot}%{_libdir}/systemd/user/maliit-server.service
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/profile.d/maliit-server.sh
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_libdir}/systemd/user/maliit-server.service
+mkdir -p %{buildroot}%{_libdir}/systemd/user/user-session.target.wants
+ln -s ../maliit-server.service %{buildroot}%{_libdir}/systemd/user/user-session.target.wants/
 
 
 %fdupes  %{buildroot}/%{_libdir}
@@ -121,6 +122,7 @@ cp -a %{SOURCE2} %{buildroot}%{_libdir}/systemd/user/maliit-server.service
 %{_datadir}/dbus-1/services/org.maliit.server.service
 %config %{_sysconfdir}/profile.d/maliit-server.sh
 %{_libdir}/systemd/user/maliit-server.service
+%{_libdir}/systemd/user/user-session.target.wants/maliit-server.service
 
 %files inputcontext
 %defattr(-,root,root,-)
