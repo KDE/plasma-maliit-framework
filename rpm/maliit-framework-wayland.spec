@@ -7,8 +7,6 @@ Group:      System/Libraries
 License:    LGPLv2.1
 URL:        http://gitorious.org/maliit/maliit-framework
 Source0:    %{name}-%{version}.tar.bz2
-Source1:    maliit-server.sh
-Source2:    maliit-server.service-wayland
 Patch0:     enable-systemd-activation.patch
 Patch1:     lipstick_platform.patch
 Requires:   maliit-framework-wayland-inputcontext
@@ -82,15 +80,17 @@ the Maliit input method framework
 
 
 %prep
-%setup -q -n %{name}-%{version}/maliit-framework
+%setup -q -n %{name}-%{version}
 
+pushd maliit-framework
 # enable-systemd-activation.patch
 %patch0 -p1
 # lipstick_platform.patch
 %patch1 -p1
+popd
 
 %build
-
+pushd maliit-framework
 %qmake5  \
     CONFIG+=enable-dbus-activation \
     CONFIG+=qt5-inputcontext \
@@ -98,13 +98,15 @@ the Maliit input method framework
     CONFIG+=noxcb
 
 make %{?jobs:-j%jobs}
-
+popd
 
 %install
 rm -rf %{buildroot}
+pushd maliit-framework
 %qmake_install
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/profile.d/maliit-server.sh
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_libdir}/systemd/user/maliit-server.service
+popd
+install -D -m 0644 maliit-server.sh %{buildroot}%{_sysconfdir}/profile.d/maliit-server.sh
+install -D -m 0644 maliit-server.service-wayland %{buildroot}%{_libdir}/systemd/user/maliit-server.service
 mkdir -p %{buildroot}%{_libdir}/systemd/user/user-session.target.wants
 ln -s ../maliit-server.service %{buildroot}%{_libdir}/systemd/user/user-session.target.wants/
 
@@ -145,4 +147,3 @@ ln -s ../maliit-server.service %{buildroot}%{_libdir}/systemd/user/user-session.
 %files tests
 %defattr(-,root,root,-)
 %{_libdir}/maliit-framework-tests/
-
