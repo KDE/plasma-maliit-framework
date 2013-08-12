@@ -9,6 +9,7 @@ URL:        http://gitorious.org/maliit/maliit-framework
 Source0:    %{name}-%{version}.tar.bz2
 Patch0:     enable-systemd-activation.patch
 Patch1:     lipstick_platform.patch
+Patch2:     ic-preedit.patch
 Requires:   maliit-framework-wayland-inputcontext
 Requires:   qt5-qtdeclarative-import-qtquick2plugin
 Requires:   systemd-user-session-targets
@@ -87,6 +88,8 @@ pushd maliit-framework
 %patch0 -p1
 # lipstick_platform.patch
 %patch1 -p1
+# ic-preedit.patch
+%patch2 -p1
 popd
 
 %build

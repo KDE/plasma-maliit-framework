@@ -1,0 +1,97 @@
+From 487c7544587af2cbd79dff212ff37622f801f96c Mon Sep 17 00:00:00 2001
+From: Pekka Vuorela <pekka.vuorela@jollamobile.com>
+Date: Thu, 8 Aug 2013 16:59:29 +0300
+Subject: [PATCH] Expose preedit as property
+
+Allows a dirty way to get access to current preediting state from
+application side.
+---
+ input-context/minputcontext.cpp | 12 ++++++++++++
+ input-context/minputcontext.h   |  6 ++++++
+ 2 files changed, 18 insertions(+)
+
+diff --git a/input-context/minputcontext.cpp b/input-context/minputcontext.cpp
+index 857bfdc..1e1f90c 100644
+--- a/input-context/minputcontext.cpp
++++ b/input-context/minputcontext.cpp
+@@ -190,6 +190,7 @@ void MInputContext::commit()
+ 
+         preedit.clear();
+         preeditCursorPos = -1;
++        Q_EMIT preeditChanged();
+     }
+ 
+     imServer->reset(hadPreedit);
+@@ -302,6 +303,11 @@ void MInputContext::setFocusObject(QObject *focused)
+     }
+ }
+ 
++QString MInputContext::preeditString()
++{
++    return preedit;
++}
++
+ bool MInputContext::filterEvent(const QEvent *event)
+ {
+     bool eaten = false;
+@@ -423,6 +429,7 @@ void MInputContext::commitString(const QString &string, int replacementStart,
+         return;
+     }
+ 
++    bool hadPreedit = !preedit.isEmpty();
+     preedit.clear();
+     preeditCursorPos = -1;
+ 
+@@ -447,6 +454,10 @@ void MInputContext::commitString(const QString &string, int replacementStart,
+         event.setCommitString(string, replacementStart, replacementLength);
+         QGuiApplication::sendEvent(qGuiApp->focusObject(), &event);
+     }
++
++    if (hadPreedit) {
++        Q_EMIT preeditChanged();
++    }
+ }
+ 
+ 
+@@ -515,6 +526,7 @@ void MInputContext::updatePreeditInternally(const QString &string,
+     }
+ 
+     QGuiApplication::sendEvent(qGuiApp->focusObject(), &event);
++    Q_EMIT preeditChanged();
+ }
+ 
+ void MInputContext::keyEvent(int type, int key, int modifiers, const QString &text,
+diff --git a/input-context/minputcontext.h b/input-context/minputcontext.h
+index 5ffe5f5..619622d 100644
+--- a/input-context/minputcontext.h
++++ b/input-context/minputcontext.h
+@@ -30,6 +30,7 @@ class MImServerConnection;
+ class MInputContext : public QPlatformInputContext
+ {
+     Q_OBJECT
++    Q_PROPERTY(QString preedit READ preeditString NOTIFY preeditChanged)
+ 
+ public:
+     enum OrientationAngle {
+@@ -58,6 +59,8 @@ public:
+     virtual Qt::LayoutDirection inputDirection() const;
+     virtual void setFocusObject(QObject *object);
+ 
++    QString preeditString();
++
+ public Q_SLOTS:
+     // Hooked up to the input method server
+     void activationLostEvent();
+@@ -97,6 +100,9 @@ private Q_SLOTS:
+     // note: this method is called when the orientation change is finished
+     void notifyOrientationChanged(MInputContext::OrientationAngle orientation);
+ 
++Q_SIGNALS:
++    void preeditChanged();
++
+ private:
+     Q_DISABLE_COPY(MInputContext)
+ 
+-- 
+1.8.3.1
+
