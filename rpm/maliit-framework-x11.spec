@@ -14,7 +14,6 @@ Patch0:     enable-systemd-activation.patch
 # won't pass automatic QA due to unused files in the packaging
 # directory
 Patch1:     lipstick_platform.patch
-Patch2:     ic-preedit.patch
 Requires:   dbus-x11
 Requires:   maliit-framework-x11-inputcontext
 Requires:   qt5-qtdeclarative-import-qtquick2plugin
@@ -102,8 +101,6 @@ pushd maliit-framework
 %patch0 -p1
 # lipstick_platform.patch
 %patch1 -p1
-# ic-preedit.patch
-%patch2 -p1
 popd
 
 %build
