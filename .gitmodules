@@ -1,0 +1,3 @@
+[submodule "maliit-framework"]
+	path = maliit-framework
+	url = https://github.com/maliit/framework.git
