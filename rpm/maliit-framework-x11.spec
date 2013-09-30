@@ -158,3 +158,4 @@ ln -s ../maliit-server.service %{buildroot}%{_libdir}/systemd/user/user-session.
 %files tests
 %defattr(-,root,root,-)
 %{_libdir}/maliit-framework-tests/
+/opt/tests/maliit-framework/tests.xml
