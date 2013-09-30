@@ -23,6 +23,9 @@
 #ifdef HAVE_WAYLAND
 #include "waylandplatform.h"
 #endif // HAVE_WAYLAND
+#ifdef HAVE_LIPSTICK
+#include "lipstickplatform.h"
+#endif // HAVE_LIPSTICK
 #include "unknownplatform.h"
 
 #include <QGuiApplication>
@@ -96,6 +99,9 @@ QSharedPointer<MInputContextConnection> createConnection(const MImServerConnecti
 
 QSharedPointer<Maliit::AbstractPlatform> createPlatform()
 {
+#ifdef HAVE_LIPSTICK
+    return QSharedPointer<Maliit::AbstractPlatform>(new Maliit::LipstickPlatform);
+#endif
 #ifdef HAVE_WAYLAND
     if (QGuiApplication::platformName().startsWith("wayland")) {
         return QSharedPointer<Maliit::AbstractPlatform>(new Maliit::WaylandPlatform);

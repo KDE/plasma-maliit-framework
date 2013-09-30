@@ -7,12 +7,6 @@ Group:      System/Libraries
 License:    LGPLv2.1
 URL:        http://gitorious.org/maliit/maliit-framework
 Source0:    %{name}-%{version}.tar.bz2
-# the following patch is not required for X11, but should not change
-# behaviour when applied. We need to apply it due to the way our git
-# packaging and QA process work -- without applying it X11 maliit
-# won't pass automatic QA due to unused files in the packaging
-# directory
-Patch0:     lipstick_platform.patch
 Requires:   dbus-x11
 Requires:   maliit-framework-x11-inputcontext
 Requires:   qt5-qtdeclarative-import-qtquick2plugin
@@ -96,8 +90,6 @@ the Maliit input method framework
 %setup -q -n %{name}-%{version}
 
 pushd maliit-framework
-# lipstick_platform.patch
-%patch0 -p1
 popd
 
 %build

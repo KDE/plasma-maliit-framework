@@ -23,6 +23,8 @@ for(OPTION,$$list($$lower($$COV_OPTION))){
     }
 }
 
+lipstick:DEFINES+=HAVE_LIPSTICK
+
 QMAKE_CLEAN += *.gcno *.gcda
 
 INSTALLS += target

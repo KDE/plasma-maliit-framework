@@ -7,7 +7,6 @@ Group:      System/Libraries
 License:    LGPLv2.1
 URL:        http://gitorious.org/maliit/maliit-framework
 Source0:    %{name}-%{version}.tar.bz2
-Patch0:     lipstick_platform.patch
 Requires:   maliit-framework-wayland-inputcontext
 Requires:   qt5-qtdeclarative-import-qtquick2plugin
 Requires:   systemd-user-session-targets
@@ -82,8 +81,6 @@ the Maliit input method framework
 %setup -q -n %{name}-%{version}
 
 pushd maliit-framework
-# lipstick_platform.patch
-%patch0 -p1
 popd
 
 %build

@@ -86,6 +86,11 @@ wayland {
     SERVER_SOURCES += waylandplatform.cpp
 }
 
+lipstick {
+    SERVER_HEADERS_PRIVATE += lipstickplatform.h
+    SERVER_SOURCES += lipstickplatform.cpp
+}
+
 SETTINGS_HEADERS_PRIVATE += \
         mimsettingsqsettings.h \
         mimsettings.h \
