@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdefinition version="1.0">
+   <suite name="maliit-framework" domain="Input">
+       <description>Maliit tests</description>
+       <set name="Maliit_Functional_Tests" feature="Maliit_Functional_Tests">
+           <case name="ft_exampleplugin" type="Functional">
+               <step>@PATH@/ft_exampleplugin/ft_exampleplugin</step>
+           </case>
+           <case name="ft_mimpluginmanager" type="Functional">
+               <step>LD_LIBRARY_PATH=@PATH@/plugins @PATH@/ft_mimpluginmanager/ft_mimpluginmanager</step>
+           </case>
+       </set>
+       <set name="Maliit_Sanity_Tests" feature="Maliit_Sanity_Tests">
+           <case name="sanitychecks" type="Functional">
+               <step>@PATH@/sanitychecks/sanitychecks</step>
+           </case>
+       </set>
+       <set name="Maliit_Unit_Tests" feature="Maliit_Unit_Tests">
+           <case name="ut_mattributeextensionmanager" type="Unit">
+               <step>@PATH@/ut_mattributeextensionmanager/ut_mattributeextensionmanager</step>
+           </case>
+           <case name="ut_mimonscreenplugins" type="Unit">
+               <step>@PATH@/ut_mimonscreenplugins/ut_mimonscreenplugins</step>
+           </case>
+           <case name="ut_mimpluginmanager" type="Unit">
+               <step>LD_LIBRARY_PATH=@PATH@/plugins @PATH@/ut_mimpluginmanager/ut_mimpluginmanager</step>
+           </case>
+           <case name="ut_mimpluginmanagerconfig" type="Unit">
+               <step>LD_LIBRARY_PATH=@PATH@/plugins @PATH@/ut_mimpluginmanagerconfig/ut_mimpluginmanagerconfig</step>
+           </case>
+           <case name="ut_mimserveroptions" type="Unit">
+               <step>@PATH@/ut_mimserveroptions/ut_mimserveroptions</step>
+           </case>
+           <case name="ut_mimsettings" type="Unit">
+               <step>@PATH@/ut_mimsettings/ut_mimsettings</step>
+           </case>
+           <case name="ut_minputmethodquickplugin" type="Unit">
+               <step>@PATH@/ut_minputmethodquickplugin/ut_minputmethodquickplugin</step>
+           </case>
+           <case name="ut_mkeyoverride" type="Unit">
+               <step>@PATH@/ut_mkeyoverride/ut_mkeyoverride</step>
+           </case>
+       </set>
+   </suite>
+</testdefinition>
+

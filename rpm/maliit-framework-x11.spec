@@ -7,13 +7,6 @@ Group:      System/Libraries
 License:    LGPLv2.1
 URL:        http://gitorious.org/maliit/maliit-framework
 Source0:    %{name}-%{version}.tar.bz2
-Patch0:     enable-systemd-activation.patch
-# the following patch is not required for X11, but should not change
-# behaviour when applied. We need to apply it due to the way our git
-# packaging and QA process work -- without applying it X11 maliit
-# won't pass automatic QA due to unused files in the packaging
-# directory
-Patch1:     lipstick_platform.patch
 Requires:   dbus-x11
 Requires:   maliit-framework-x11-inputcontext
 Requires:   qt5-qtdeclarative-import-qtquick2plugin
@@ -97,10 +90,6 @@ the Maliit input method framework
 %setup -q -n %{name}-%{version}
 
 pushd maliit-framework
-# enable-systemd-activation.patch
-%patch0 -p1
-# lipstick_platform.patch
-%patch1 -p1
 popd
 
 %build
@@ -158,3 +147,4 @@ ln -s ../maliit-server.service %{buildroot}%{_libdir}/systemd/user/user-session.
 %files tests
 %defattr(-,root,root,-)
 %{_libdir}/maliit-framework-tests/
+/opt/tests/maliit-framework/tests.xml

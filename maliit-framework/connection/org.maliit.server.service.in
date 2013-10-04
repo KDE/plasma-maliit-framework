@@ -1,0 +1,5 @@
+[D-BUS Service]
+Name=org.maliit.server
+Exec=@BINDIR@/maliit-server @MALIIT_SERVER_ARGUMENTS@
+SystemdService=maliit-server.service
+
