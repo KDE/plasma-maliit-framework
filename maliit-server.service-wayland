@@ -1,10 +1,10 @@
 [Unit]
 Description=The Maliit server
-After=lipstick.service pre-user-session.target
+After=lipstick.service pre-user-session.target booster-qt5.service
 Requires=dbus.socket pre-user-session.target
 
 [Service]
-ExecStart=/usr/bin/maliit-server
+ExecStart=/usr/bin/invoker --type=qt5 /usr/bin/maliit-server
 Type=dbus
 BusName=org.maliit.server
 

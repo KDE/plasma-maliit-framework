@@ -23,6 +23,15 @@ for(OPTION,$$list($$lower($$COV_OPTION))){
     }
 }
 
+packagesExist(qt5-boostable) {
+    message("Building with qt5-boostable support")
+    CONFIG += link_pkgconfig
+    PKGCONFIG += qt5-boostable
+} else {
+    warning("qt5-boostable not available")
+}
+
+
 lipstick:DEFINES+=HAVE_LIPSTICK
 
 QMAKE_CLEAN += *.gcno *.gcda
