@@ -102,7 +102,7 @@ pushd maliit-framework
 %qmake_install
 popd
 install -D -m 0644 maliit-server.sh %{buildroot}%{_sysconfdir}/profile.d/maliit-server.sh
-install -D -m 0644 maliit-server.service-wayland %{buildroot}%{_libdir}/systemd/user/maliit-server.service
+install -D -m 0644 maliit-server.service %{buildroot}%{_libdir}/systemd/user/maliit-server.service
 mkdir -p %{buildroot}%{_libdir}/systemd/user/user-session.target.wants
 ln -s ../maliit-server.service %{buildroot}%{_libdir}/systemd/user/user-session.target.wants/
 
