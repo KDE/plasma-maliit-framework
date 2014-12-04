@@ -175,7 +175,7 @@ void MainWindow::onStartServerClicked()
 {
 
     QStringList arguments;
-    arguments << "-bypass-wm-hint";
+    //arguments << "-bypass-wm-hint";
 
     // Self-compositing is currently only supported in fullscreen mode:
     if (enableFullScreenMode()) {
