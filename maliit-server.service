@@ -5,6 +5,7 @@ Requires=dbus.socket
 
 [Service]
 Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=%t/dbus/user_bus_socket
+Environment=QT_QPA_PLATFORM=wayland
 ExecStart=/usr/bin/maliit-server
 Type=dbus
 BusName=org.maliit.server
