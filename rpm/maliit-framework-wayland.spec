@@ -22,6 +22,7 @@ BuildRequires:  pkgconfig(Qt5Compositor)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig(qt5-boostable)
+BuildRequires:  libxkbcommon-devel
 Provides:   maliit-framework
 Conflicts:   maliit-framework-x11
 Obsoletes:   libmaliit-quick
