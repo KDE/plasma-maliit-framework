@@ -18,7 +18,7 @@ BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(Qt5Wayland)
+BuildRequires:  pkgconfig(Qt5Compositor)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig(qt5-boostable)
