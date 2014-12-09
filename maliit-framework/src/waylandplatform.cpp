@@ -126,7 +126,7 @@ void WaylandPlatformPrivate::handleRegistryGlobal(uint32_t name,
 
     qDebug() << __PRETTY_FUNCTION__ << "Name:" << name << "Interface:" << interface;
     if (!strcmp(interface, "wl_input_panel")) {
-        m_panel.reset(new QtWayland::wl_input_panel(m_registry, name));
+        m_panel.reset(new QtWayland::wl_input_panel(m_registry, name, 1));
         m_panel_name = name;
 
         Q_FOREACH (const WindowData& data, m_scheduled_windows) {
