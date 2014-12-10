@@ -93,8 +93,7 @@ pushd maliit-framework
     CONFIG+=enable-dbus-activation \
     CONFIG+=qt5-inputcontext \
     CONFIG+=lipstick \
-    CONFIG+=noxcb \
-    CONFIG+=wayland
+    CONFIG+=noxcb
     
 
 make %{?jobs:-j%jobs}
