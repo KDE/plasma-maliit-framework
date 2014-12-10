@@ -91,10 +91,11 @@ popd
 pushd maliit-framework
 %qmake5  \
     CONFIG+=enable-dbus-activation \
+    CONFIG+=qt5-inputcontext \
     CONFIG+=lipstick \
     CONFIG+=noxcb \
     CONFIG+=wayland
-#CONFIG+=qt5-inputcontext \
+    
 
 make %{?jobs:-j%jobs}
 popd
