@@ -69,6 +69,7 @@ MainWindow::MainWindow()
     initUI();
     onServerStateChanged();
 
+    qWarning()<<"Screen Orientation:"<<windowHandle()->screen()->primaryOrientation()<<windowHandle()->screen()->geometry();
     // Work around a bug in maliit input method support where primary orientation is always portrait
     windowHandle()->reportContentOrientationChange(windowHandle()->screen()->primaryOrientation());
 }
