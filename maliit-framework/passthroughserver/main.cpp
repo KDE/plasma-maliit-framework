@@ -79,6 +79,9 @@ void outputMessagesToStdErr(QtMsgType type,
     case QtFatalMsg:
         fprintf(stderr, "FATAL: %s\n", raw);
         abort();
+    case QtInfoMsg:
+        fprintf(stderr, "INFO: %s\n", raw);
+        break;
     }
 }
 

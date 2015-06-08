@@ -65,7 +65,7 @@ namespace
         return result;
     }
 
-    QSet<QString> findEnabledPlugins(const QList<MImOnScreenPlugins::SubView> &enabledSubViews)
+/*    QSet<QString> findEnabledPlugins(const QList<MImOnScreenPlugins::SubView> &enabledSubViews)
     {
         QSet<QString> result;
 
@@ -74,7 +74,7 @@ namespace
         }
 
         return result;
-    }
+    }*/
 }
 
 MImOnScreenPlugins::SubView::SubView()
