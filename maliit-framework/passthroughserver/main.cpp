@@ -79,9 +79,11 @@ void outputMessagesToStdErr(QtMsgType type,
     case QtFatalMsg:
         fprintf(stderr, "FATAL: %s\n", raw);
         abort();
+#if QT_VERSION >= 0x050500
     case QtInfoMsg:
         fprintf(stderr, "INFO: %s\n", raw);
         break;
+#endif
     }
 }
 
