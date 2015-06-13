@@ -358,7 +358,7 @@ void MInputContext::showInputPanel()
         sipHideTimer.stop();
     }
 
-    if (!active || !inputMethodAccepted()) {
+    if (0&&(!active || !inputMethodAccepted())) {
         // in case SIP request comes without a properly focused widget, we
         // don't ask input method server to be shown. It's done when the next widget
         // is focused, so the widget state information can be set.
