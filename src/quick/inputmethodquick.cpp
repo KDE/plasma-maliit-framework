@@ -141,9 +141,11 @@ public:
         //TODO: put this in a platform plugin
         qWarning()<<"Setting region:"<<region;
 
-        KWayland::Client::Surface *surf = KWayland::Client::Surface::fromWindow(surface.data());
-        surf->setInputRegion(m_compositor->createRegion(region).get());
-        surf->commit(KWayland::Client::Surface::CommitFlag::None);
+        if (m_compositor) {
+            KWayland::Client::Surface *surf = KWayland::Client::Surface::fromWindow(surface.data());
+            surf->setInputRegion(m_compositor->createRegion(region).get());
+            surf->commit(KWayland::Client::Surface::CommitFlag::None);
+        }
     }
 
     void updateActionKey(const MKeyOverride::KeyOverrideAttributes changedAttributes)
