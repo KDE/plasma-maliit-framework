@@ -7,7 +7,7 @@ HEADERS += \
 SOURCES += \
     ut_mattributeextensionmanager.cpp \
 
-QT += dbus
+QT += dbus KWaylandClient
 CONFIG += plugin
 
 include($$TOP_DIR/src/libmaliit-plugins.pri)

@@ -1,6 +1,6 @@
 include(../common_top.pri)
 
-QT += quick
+QT += quick KWaylandClient
 
 # For MImInputContextConnection pulled in by TestInputMethodHost
 include($$TOP_DIR/connection/libmaliit-connection.pri)

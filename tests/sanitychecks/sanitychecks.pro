@@ -7,4 +7,6 @@ HEADERS += \
 SOURCES += \
     sanitychecks.cpp \
 
+QT += KWaylandClient
+
 include(../common_check.pri)

@@ -9,4 +9,6 @@ HEADERS += \
 SOURCES += \
     ut_mimserveroptions.cpp \
 
+QT += dbus KWaylandClient
+
 include(../common_check.pri)

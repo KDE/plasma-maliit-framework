@@ -7,6 +7,8 @@ HEADERS += \
 SOURCES += \
     ut_mimsettings.cpp \
 
+QT += KWaylandClient
+
 include($$TOP_DIR/src/libmaliit-plugins.pri)
 include($$TOP_DIR/connection/libmaliit-connection.pri)
 

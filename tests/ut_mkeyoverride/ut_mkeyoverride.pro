@@ -9,7 +9,7 @@ HEADERS += \
 SOURCES += \
     ut_mkeyoverride.cpp \
 
-QT += dbus
+QT += dbus KWaylandClient
 CONFIG += plugin
 
 include($$TOP_DIR/src/libmaliit-plugins.pri)

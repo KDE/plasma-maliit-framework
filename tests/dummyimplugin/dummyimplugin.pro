@@ -30,6 +30,8 @@ invalidplugins.files = $$INVALIDPLUGINS
 
 INSTALLS += target invalidplugins
 
+QT += KWaylandClient
+
 QMAKE_CLEAN += ../plugins/libdummyimplugin.so
 
 QMAKE_EXTRA_TARGETS += check

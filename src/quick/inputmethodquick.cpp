@@ -29,6 +29,10 @@
 #include <QQmlEngine>
 #include <QQuickView>
 
+#include <KWayland/Client/compositor.h>
+#include <KWayland/Client/surface.h>
+#include <KWayland/Client/region.h>
+
 namespace Maliit
 {
 
@@ -63,6 +67,7 @@ public:
     QRect inputMethodArea;
     int appOrientation;
     bool haveFocus;
+    KWayland::Client::Compositor *m_compositor;
 
     //! current active state
     Maliit::HandlerState activeState;
@@ -93,6 +98,7 @@ public:
         , surface(createWindow(host))
         , appOrientation(0)
         , haveFocus(false)
+        , m_compositor(KWayland::Client::Compositor::fromApplication(q_ptr))
         , activeState(Maliit::OnScreen)
         , sipRequested(false)
         , sipIsInhibited(false)
@@ -112,7 +118,12 @@ public:
         Q_ASSERT(surface);
 
         updateActionKey(MKeyOverride::All);
-        surface->engine()->addImportPath(MALIIT_PLUGINS_DATA_DIR);
+        qWarning()<<surface->engine()->importPathList();
+        //HACK: seems to work better than addImportPath since the order is important
+        QStringList importPaths;
+
+        importPaths << MALIIT_PLUGINS_DATA_DIR << surface->engine()->importPathList();
+        surface->engine()->setImportPathList(importPaths);
         surface->engine()->rootContext()->setContextProperty("MInputMethodQuick", im);
     }
 
@@ -127,6 +138,12 @@ public:
         }
 
         host->setInputMethodArea(region, surface.data());
+        //TODO: put this in a platform plugin
+        qWarning()<<"Setting region:"<<region;
+
+        KWayland::Client::Surface *surf = KWayland::Client::Surface::fromWindow(surface.data());
+        surf->setInputRegion(m_compositor->createRegion(region).get());
+        surf->commit(KWayland::Client::Surface::CommitFlag::None);
     }
 
     void updateActionKey(const MKeyOverride::KeyOverrideAttributes changedAttributes)

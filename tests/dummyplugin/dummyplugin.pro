@@ -19,6 +19,8 @@ target.path += $$MALIIT_TEST_LIBDIR/plugins
 
 INSTALLS += target
 
+QT += KWaylandClient
+
 QMAKE_CLEAN += ../plugins/libdummyplugin.so
 
 QMAKE_EXTRA_TARGETS += check

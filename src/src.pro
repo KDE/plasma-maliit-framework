@@ -6,6 +6,8 @@ VERSION = $$MALIIT_ABI_VERSION
 TEMPLATE = lib
 TARGET = $$TOP_DIR/lib/$$MALIIT_PLUGINS_LIB
 
+CONFIG += c++11
+
 # Input
 PLUGIN_HEADERS_PUBLIC = \
         maliit/plugins/inputmethodplugin.h \
@@ -141,7 +143,7 @@ SOURCES += \
         $$QUICK_SOURCES
 
 CONFIG += link_pkgconfig
-QT = core gui gui-private dbus qml quick
+QT = core gui gui-private dbus qml quick KWaylandClient KArchive
 
 
 # coverage flags are off per default, but can be turned on via qmake COV_OPTION=on
@@ -151,6 +153,8 @@ for(OPTION,$$list($$lower($$COV_OPTION))){
         LIBS += -lgcov
     }
 }
+
+# LIBS += -lKWaylandClient
 
 OBJECTS_DIR = .obj
 MOC_DIR = .moc

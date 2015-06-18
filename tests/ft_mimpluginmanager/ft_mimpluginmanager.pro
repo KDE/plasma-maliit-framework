@@ -1,6 +1,6 @@
 include(../common_top.pri)
 
-QT += gui
+QT += gui KWaylandClient
 
 INCLUDEPATH +=  \
     ../stubs

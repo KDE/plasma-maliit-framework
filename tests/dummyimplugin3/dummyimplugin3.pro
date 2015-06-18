@@ -11,6 +11,8 @@ include($$TOP_DIR/src/libmaliit-plugins.pri)
 
 CONFIG += plugin
 
+QT += KWaylandClient
+
 HEADERS += \
     dummyimplugin3.h \
     dummyinputmethod3.h \
