@@ -529,6 +529,9 @@ void InputMethodQuick::userHide()
 {
     hide();
     inputMethodHost()->notifyImInitiatedHiding();
+    if (d_ptr->surface) {
+        d_ptr->surface->hide();
+    }
 }
 
 void InputMethodQuick::setKeyOverrides(const QMap<QString, QSharedPointer<MKeyOverride> > &overrides)
