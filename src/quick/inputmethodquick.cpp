@@ -49,6 +49,7 @@ QQuickView *createWindow(MAbstractInputMethodHost *host)
     format.setAlphaBufferSize(8);
     view->setFormat(format);
     view->setColor(QColor(Qt::transparent));
+    view->setResizeMode(QQuickView::SizeRootObjectToView);
 
     host->registerWindow(view.data(), Maliit::PositionCenterBottom);
 
